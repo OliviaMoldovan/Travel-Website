@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Contul meu</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="../static/images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald:200,400%7CLato:300,400,300italic,700%7CMontserrat:900">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/fonts.css">
+  </head>
+  <body>
+        <div class="rd-navbar-wrap rd-navbar-default">
+          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fullwidth" data-xl-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static" data-md-stick-up-offset="2px" data-lg-stick-up-offset="2px" data-stick-up="true" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true">
+            <div class="rd-navbar-inner">
+              <div class="rd-navbar-panel">
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                <div class="rd-navbar-brand"><a class="brand-name" href="home"><img class="logo-default" src="../static/images/logo.png" alt="" width="208" height="46"/></a></div>
+              </div>
+              <div class="rd-navbar-aside-right">
+                <div class="rd-navbar-nav-wrap">
+                  <ul class="rd-navbar-nav">
+                    <li><a>Salut, {{user.username}}!</a>
+                    </li>
+                    <li><a href="home">Acasa</a>
+                    </li>
+                    <li class="active"><a href="myaccount">Contul meu</a>
+                    </li>
+                    </li>
+                    <li><a href="logout">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <section class="breadcrumbs-custom" style="background: url(../static/images/cont1.jpg); background-size: cover;">
+            <p class="heading-1 breadcrumbs-custom-title">Contul meu</p>
+            <ul class="breadcrumbs-custom-path"></ul>
+          </div>
+        </section>
+      </header>
+      <section class="section section-lg bg-default text-center">
+        <div class="container container-wide">
+          <div class="row row-fix row-50 row-custom-bordered">
+            <div class="col-sm-6 col-lg-3">
+              <article class="box-simple">
+                <div class="box-simple-icon novi-icon mdi mdi-phone"></div>
+                <h6>Numar de telefon</h6>
+                <div class="box-simple-text"><a>{{user.phone_number}}</a></div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="box-simple">
+                <div class="box-simple-icon novi-icon mdi mdi-account"></div>
+                <h6>Nume si prenume</h6>
+                <div class="box-simple-text">
+                  <ul class="list-comma list-0">
+                    <li><a>{{user.last_name}}<br>{{user.first_name}}</a></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="box-simple">
+                <div class="box-simple-icon novi-icon mdi mdi-email-open"></div>
+                <h6>E-mail</h6>
+                <div class="box-simple-text">
+                  <ul class="list-comma list-0">
+                    <li><a> {{user.email}} </a></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <article class="box-simple">
+                <div class="box-simple-icon novi-icon mdi mdi-calendar-clock"></div>
+                <h6>Data inscrierii</h6>
+                <div class="box-simple-text">
+                  <ul class="list-0">
+                    <li>{{user.date_joined}}</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-wrap bg-gray-lighter novi-background bg-cover">
+        <div class="section-wrap-inner">
+          <div class="container container-bigger">
+            <div class="row row-fix row-50">
+              <div class="col-lg-8 col-xl-7">
+                <div class="section-wrap-content section-lg">
+                  <h3>Opinia ta conteaza!</h3>
+                  <hr class="divider divider-left divider-secondary">
+                  <p class="big">Spune-ne mai multe despre experienta ta si daca ne-am ridicat asupra asteptarilor tale!</p>
+                  <form class="col-sm-12" data-form-output="form-output-global" data-form-type="contact" method="post">
+                    {% csrf_token %}
+                    <div class="row row-fix row-20">
+                      <div class="col-sm-12">
+                        <div class="form-wrap form-wrap-validation">
+                          <label class="form-label-outside" for="form-1-message">Comentariu</label>
+                          <textarea class="form-input" id="form-1-message" name="testimonial" data-constraints="@Required"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 offset-custom-1">
+                        <div class="form-button">
+                          <button class="button button-secondary button-nina" type="submit">Trimite recenzia</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Javascript-->
+    <script src="../static/js/core.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      {% if message %}
+      swal("Multumim pentru recenzie!", '{{ message }}', "success");
+      {% endif %}
+    </script>
+  </body>
+</html>

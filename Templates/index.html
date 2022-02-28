@@ -1,0 +1,272 @@
+{% load static %}
+<html class="wide wow-animation" lang="ro" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Site Title-->
+    <title>Acasa</title>
+    <link rel="icon" href="../static/images/logo.jpg" type="image/x-icon">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald:200,400%7CLato:300,400,300italic,700%7CMontserrat:900">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/fonts.css">
+  </head>
+  <body>
+    <!-- Page-->
+      <!-- Page Header-->
+      <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap rd-navbar-corporate">
+          <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fullwidth" data-xl-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static" data-md-stick-up-offset="130px" data-lg-stick-up-offset="100px" data-stick-up="true" data-sm-stick-up="true" data-md-stick-up="true" data-lg-stick-up="true" data-xl-stick-up="true">
+            <div class="rd-navbar-inner">
+              <!-- RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+                <!-- RD Navbar Toggle-->
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                <!-- RD Navbar Brand-->
+                <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img class="logo-default" src="../../../static/images/logo.png" alt="" width="208" height="46"/></a></div>
+              </div>
+              <div class="rd-navbar-aside-center">
+                <div class="rd-navbar-nav-wrap">
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li><a>Bine ai revenit, {{user1.first_name}}</a>
+                    </li>
+                    <li class="active"><a href="index.html">Acasa</a>
+                    </li>
+                    <li><a href='myaccount'>Contul meu</a>
+                    </li>
+                    <li><a href='logout'>Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <section class="section">
+        <div class="swiper-form-wrap">
+          <!-- Swiper-->
+          <div class="swiper-container swiper-slider swiper-slider_height-1 swiper-align-left swiper-align-left-custom context-dark bg-gray-darker" data-loop="false" data-autoplay="5500" data-simulate-touch="false" data-slide-effect="fade">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" data-slide-bg="../../../static/images/avion2.jpg">
+                <div class="swiper-slide-caption">
+                  <div class="container container-bigger swiper-main-section">
+                    <div class="row row-fix justify-content-sm-center justify-content-md-start">
+                      <div class="col-md-6 col-lg-5 col-xl-4 col-xxl-5">
+                        <h3>SUTE DE DESTINAȚII UIMITOARE</h3>
+                        <p class="text-spacing-sm">Oferim o varietate de destinații în care să călătoriți, variind de la cele exotice la unele extreme. Acestea includ țări și orașe foarte populare, cum ar fi Paris, Rio de Janeiro, Cairo și o mulțime de altele.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+          <!-- Tips & tricks-->
+      <section class="section section-lg novi-background bg-cover bg-default text-center">
+        <div class="container-wide">
+          <div class="row row-50">
+            <form class="col-sm-12" method="POST" action="">
+             {% csrf_token %}
+              <div class="parallax-text-wrap">
+                <h3>Cele mai bune calatorii</h3><span class="parallax-text">OKOKOKOKOKO</span>
+              </div>
+              <div class="owl-carousel owl-carousel-team owl-carousel-inset" data-items="1" data-md-items="2" data-xl-items="3" data-stage-padding="15" data-loop="false" data-margin="30" data-mouse-drag="true" data-dots="true" data-autoplay="true">
+                {% for dest in holidays %}
+                <article class="post-blog"><a class="post-blog-image"><img src= "static/{{dest.img}}" alt="" width="570" height="570"/></a>
+                  <div class="post-blog-caption">
+                    <div class="post-blog-caption-header">
+                        <div class="form-wrap">
+                        <button class="button button-block button-secondary" type="submit" name="Rezerva" value="{{dest.ID}}">Rezerva</button>
+                        </div>
+                      <ul class="post-blog-meta">
+                        <li><span>Pret $</span><a>{{dest.Pret}}</a></li>
+                      </ul>
+                    </div>
+                    <div class="post-blog-caption-body">
+                      <h5><a class="post-blog-title">{{dest.Destinatie}}</a></h5>
+                      <li>{{dest.Descriere}}</li>
+                    </div>
+                    <div class="post-blog-caption-footer">
+                      <time>Data plecarii : {{dest.Data}}</time>
+                    </div>
+                  </div>
+                </article>
+                {% endfor %}
+               </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="section-variant-1">
+          <div class="container container-bigger form-request-wrap form-request-wrap-modern">
+            <div class="row row-fix justify-content-sm-center justify-content-lg-end">
+              <div class="col-lg-6 col-xxl-5">
+                <div class="form-request form-request-modern bg-gray-lighter novi-background">
+                  <h4>Gaseste-ti destinatia de vis</h4>
+                  <form class="col-sm-12" method="post" action="">
+                    {% csrf_token %}
+                    <div class="row row-20 row-fix">
+                      <div class="col-sm-12">
+                        <label class="form-label-outside">Ce doriti sa rezervati?</label>
+                        <div class="form-wrap form-wrap-inline">
+                          <select class="form-input select-filter" data-placeholder="All" data-minimum-results-for-search="Infinity" name="strategy">
+                            <option value="avionS">Bilete de avion</option>
+                            <option value="hotelS">Cazare hoteliera</option>
+                            <option value="bothS">Ambele</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <label class="form-label-outside">Inspre</label>
+                        <div class="form-wrap form-wrap-inline">
+                          <select class="form-input select-filter" data-placeholder="All" data-minimum-results-for-search="Infinity" name="Destinatie">
+                            {% for obj in airplanes %}
+                                {% if obj.Destinatie %}
+                              <option value="{{obj.ID}}">{{obj.Destinatie}}</option>
+                                {% endif %}
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <label class="form-label-outside">Hotel</label>
+                        <div class="form-wrap form-wrap-inline">
+                            <select class="form-input select-filter" data-placeholder="All" data-minimum-results-for-search="Infinity" name="Hotel">
+                              {% for obj in hotels %}
+                                  {% if obj.Nume %}
+                              <option value="{{obj.ID}}">{{obj.Nume}}</option>
+                                  {% endif %}
+                              {% endfor %}
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-lg-6">
+                        <label class="form-label-outside">Data plecarii</label>
+                        <div class="form-wrap form-wrap-validation">
+                          <input class="form-input" id="dateForm-1" name="date" type="text" data-time-picker="date">
+                          <label class="form-label" for="dateForm-1">Alege data</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-lg-6">
+                        <label class="form-label-outside">Durata calatoriei</label>
+                        <div class="form-wrap form-wrap-validation">
+                          <select class="form-input select-filter" data-placeholder="All" data-minimum-results-for-search="Infinity" name="Durata">
+                            <option value="1">Orice durata</option>
+                            <option value="2">2 zile</option>
+                            <option value="3">3 zile</option>
+                            <option value="4">4 zile</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <label class="form-label-outside">Adulti</label>
+                        <div class="form-wrap form-wrap-modern">
+                          <input class="form-input input-append" name="nr_adulti" id="form-element-stepper-2" type="number" min="0" max="300" value="2">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <label class="form-label-outside">Copii</label>
+                        <div class="form-wrap form-wrap-modern">
+                          <input class="form-input input-append" id="form-element-stepper-3" name="nr_copii" type="number" min="0" max="300" value="0">
+                        </div>
+                      </div>
+                    </div>
+                        <button class="button button-block button-secondary" type="submit" name="Rezerva1">Rezerva acum!</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section class="section section-lg bg-gray-lighter novi-background bg-cover text-center">
+        <div class="container container-wide">
+          <h3>serviciile noastre</h3>
+          <div class="row row-50 justify-content-sm-center text-left">
+            <div class="col-sm-10 col-md-6 col-xl-3">
+              <article class="box-minimal box-minimal-border">
+                <div class="box-minimal-icon novi-icon mdi mdi-airplane"></div>
+                <p class="big box-minimal-title">Bilete de Avion</p>
+                <hr>
+                <div class="box-minimal-text text-spacing-sm">La agentia noastra de turism, puteti rezerva bilete de avion catre orice destinatie din lume. De asemenea, oferim rezervarea online a biletelor prin intermediul site-ului nostru în doar câțiva pași.</div>
+              </article>
+            </div>
+            <div class="col-sm-10 col-md-6 col-xl-3">
+              <article class="box-minimal box-minimal-border">
+                <div class="box-minimal-icon novi-icon mdi mdi-city"></div>
+                <p class="big box-minimal-title">Cazare hoteliera</p>
+                <hr>
+                <div class="box-minimal-text text-spacing-sm">Oferim o gamă largă de hoteluri, de la cele de 5 stele la proprietățile mici situate în întreaga lume, astfel încât să puteți rezerva un hotel care vă place.</div>
+              </article>
+            </div>
+            <div class="col-sm-10 col-md-6 col-xl-3">
+              <article class="box-minimal box-minimal-border">
+                <div class="box-minimal-icon novi-icon mdi mdi-beach"></div>
+                <p class="big box-minimal-title">Vacante in locatii de vis</p>
+                <hr>
+                <div class="box-minimal-text text-spacing-sm">Agentia noastra ofera sejururi variate, inclusiv de vara,personalizate pentru clientii care sunt in cautarea unei vacante exclusive si memorabile.</div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-lg text-center bg-gray-lighter novi-background bg-cover">
+        <div class="container container-bigger">
+          <h3>Opiniile altor utilizatori</h3>
+          <!-- Owl Carousel-->
+         <div class="owl-carousel owl-layout-1" data-items="1" data-dots="true" data-nav="true" data-stage-padding="0" data-loop="true" data-margin="30" data-mouse-drag="false" data-autoplay="true">
+           {% for obj in user %}
+           {% if obj.review != 'Review' %}
+           <article class="quote-boxed">
+              <div class="quote-boxed-aside"><img class="quote-boxed-image" src="static/images/review.jpg" alt="" width="210" height="210"/>
+              </div>
+              <div class="quote-boxed-main">
+                <div class="quote-boxed-text">
+                  <p><option value="{{obj.ID}}">{{obj.review}}</option></p>
+                </div>
+
+                <div class="quote-boxed-meta">
+                  <p class="quote-boxed-cite"><option value="{{obj.ID}}">{{obj.first_name}} {{obj.last_name}}</option></p>
+                  <p class="quote-boxed-small">Regular Customer</p>
+                </div>
+              </div>
+            </article>
+           {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-md text-center text-md-left bg-gray-700 novi-background bg-cover">
+        <div class="container container-wide">
+          <div class="row row-fix row-50 justify-content-sm-center">
+            <div class="col-xxl-8">
+              <div class="box-cta box-cta-inline">
+                <div class="box-cta-inner">
+                  <h3 class="box-cta-title">Planifica-ti vacanta fara a-ti parasi locuinta!</h3>
+                  <p>Folosind site-ul nostru, poti rezerva orice tur doar prin câteva click-ri.</p>
+                </div>
+                <div class="box-cta-inner"><a class="button button-secondary button-nina" href="#">Rezerva acum</a></div>
+              </div>
+            </div>
+          </div>
+        </div></section>
+
+    <!-- Javascript-->
+    <script src="../static/js/core.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      {% if message %}
+      swal("Comanda plasata cu success!", '{{ message }}', "success");
+      {% endif %}
+    </script>
+  </body>
+</html>
